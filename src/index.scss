@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=ABeeZee&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500&display=swap');
+
+:root {
+  --beige: #C8A183;
+  --dark-blue: #2D2D2D;
+  --gray: #D9D9D9;
+  --metallic: #9F9F9F;
+  --purple: #4F131B;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Oswald', 'ABeeZee', 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #EBEBEB;;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+p,
+li {
+  font-family: 'Oswald', sans-serif;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: var(--dark-blue);
+  font-family: 'Oswald', sans-serif;
+}
+
+button {
+  font-family: 'Oswald';
+  font-style: normal;
+  cursor: pointer;
+  text-align: center;
+  border: none;
+}
+
+img {
+  border-style: none;
+  object-fit: cover;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}

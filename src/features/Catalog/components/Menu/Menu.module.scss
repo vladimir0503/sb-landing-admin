@@ -1,0 +1,40 @@
+.catalogNawbar {
+    position: sticky;
+    top: 0px;
+    display: flex;
+    flex-direction: column;
+    width: 272px;
+    height: 372px;
+    border: 1px solid #000000;
+}
+
+%active-name {
+    background-color: var(--purple);
+    color: #d5d5d5;
+    border: 2px solid #ffffff;
+}
+
+.catalogName {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 58px;
+    color: #414141;
+    list-style-type: none;
+    margin: 0;
+    font-weight: 400;
+    font-size: 25px;
+    transition: 0.2s;
+    border: 2px solid #EBEBEB;
+    cursor: pointer;
+
+    &:hover {
+        @extend %active-name;
+    }
+}
+
+.activeName {
+    background-color: var(--purple);
+    color: #d5d5d5;
+    border: 2px solid #ffffff;
+}

@@ -1,0 +1,48 @@
+.catalogItem {
+    display: flex;
+    flex-direction: column;
+    margin-right: 8px;
+    margin-bottom: 10px;
+    padding: 33px 34px 0 35px;
+    width: 281px;
+    height: 386px;
+    border: 1px solid #2D2D2D;
+    color: #2D2D2D;
+
+    img {
+        width: 280px;
+        height: 210px;
+        margin-bottom: 40px;
+    }
+
+    p {
+        text-align: end;
+        font-weight: 400;
+        font-size: 16px;
+    }
+
+    h3 {
+        text-align: center;
+        font-weight: 400;
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    button {
+        width: 125px;
+        height: 47px;
+        background-color: #2D2D2D;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 27px;
+        margin: 0 auto;
+        color: white;
+        cursor: pointer;
+        transition: 0.3s;
+        border: 1px solid #FFFFFF;
+
+        &:hover {
+            background-color: var(--purple);
+        }
+    }
+}
