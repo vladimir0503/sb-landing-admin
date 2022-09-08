@@ -1,7 +1,8 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getCatalog } from '../catalogSlice';
-import { logOut } from '../../auth/authSlice';
+import { useNavigate } from 'react-router-dom';
+import api from '../../../api/api';
 import Menu from './Menu/Menu';
 import CatalogItem from './CatalogItem/CatalogItem';
 
@@ -11,50 +12,44 @@ const url = 'https://engraving-db-13cea-default-rtdb.firebaseio.com/catalog';
 
 const Catalog = () => {
 
-    const { catalog, catalogName } = useSelector(state => state.catalog)
+    const { catalog, catalogName, isLoading } = useSelector(state => state.catalog)
     const dispatch = useDispatch();
 
+    const navigate = useNavigate();
+
     const addCard = async () => {
-
-        const data = {
-            name: 'Название товара',
-            price: 'Цена',
-            article: 'Артикул',
-            description: 'Описание товара',
-            imageUrl: '',
-            slides: ['']
+        try {
+            const data = await api.addProduct(catalogName);
+            navigate(`/card/${catalogName}/${data.name}`)
+            console.log(data);
+        } catch (error) {
+            alert('Ошибка сервера');
+            console.error(error);
         };
-
-        const secret = process.env.REACT_APP_FIREBASE_SECRET;
-
-        const res = await fetch(`${url}/${catalogName}.json?auth=${secret}`, {
-            'method': 'POST',
-            'body': JSON.stringify(data)
-        })
-        const product = await res.json();
-
-        console.log(product);
     };
 
     React.useEffect(() => {
         dispatch(getCatalog(catalogName));
     }, [catalogName]);
 
-    console.log(catalog);
-
     return (
         <div className={s.catalog}>
             <div className={s.catalogContent}>
                 <div>
                     <Menu />
-                    <button onClick={addCard}>Добавить товар</button>
                 </div>
-                <div className={s.catalogItems}>
-                    {catalog.map((item, i) => (
-                        <CatalogItem key={i} item={{...item, catalogName}} />
-                    ))}
-                </div>
+                {isLoading
+                    ? <h1>Загрузка</h1>
+                    : <div className={s.contentWrapper}>
+                        <div className={s.catalogItems}>
+                            {catalog.map((item, i) => (
+                                <CatalogItem key={i} item={{ ...item, catalogName }} />
+                            ))}
+                        </div>
+                    </div>
+                }
             </div>
+            <button className={s.addBtn} onClick={addCard}>Добавить товар</button>
         </div>
     );
 };

@@ -1,0 +1,172 @@
+@keyframes opacity-anim1 {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes opacity-anim2 {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes opacity-anim3 {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+%title {
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 37px;
+    margin-bottom: 50px;
+}
+
+.productInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 444px;
+    border: 2px solid #333333;
+    padding: 46px 71px 10px 40px;
+    transition: 0.2s;
+    color: var(--dark-blue);
+
+    form {
+        display: flex;
+        flex-direction: column;
+
+        input {
+        }
+    }
+}
+
+.infoBlock {
+    animation: opacity-anim1 0.3s;
+
+    h2 {
+        @extend %title;
+    }
+
+    p {
+        margin-bottom: 16px;
+
+        &:nth-child(3) {
+            font-weight: 500;
+        }
+
+        &:nth-child(4) {
+            font-weight: 400;
+            font-size: 25px;
+            line-height: 120%;
+        }
+    }
+}
+
+.price {
+    @extend %title;
+}
+
+.buttonsWrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttonsBlock {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+    justify-content: flex-end;
+    width: 310px;
+
+    button {
+        padding: 10px 20px;
+        background: #333333;
+        border: 1px solid #ffffff;
+        margin-right: 8px;
+        margin-bottom: 8px;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 27px;
+        color: #ffffff;
+        cursor: pointer;
+        transition: 0.2s;
+
+        &:hover {
+            background-color: var(--purple);
+        }
+
+        img {
+            margin-left: 8px;
+            transition: 0.3s;
+        }
+
+        &.active {
+            background-color: var(--purple);
+
+            img {
+                transform: rotate(180deg);
+            }
+        }
+    }
+}
+
+.btnActive {
+    background-color: var(--purple);
+}
+
+%text-style {
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 44px;
+}
+
+.delivery {
+    animation: opacity-anim2 0.3s;
+
+    p {
+        @extend %text-style;
+    }
+
+    li {
+        @extend %text-style;
+    }
+
+    ul {
+        padding-left: 31px;
+    }
+}
+
+.payment {
+    animation: opacity-anim3 0.3s;
+
+    p {
+        @extend %text-style;
+        font-weight: 300;
+    }
+
+    li {
+        @extend %text-style;
+    }
+
+    ul {
+        padding-left: 31px;
+    }
+}
+
+.hide {
+    opacity: 0;
+}

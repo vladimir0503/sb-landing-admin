@@ -24,13 +24,19 @@ const CatalogItem = ({ item }) => {
         console.log(res);
     };
 
+    const img = item.slides?.[0];
+
+    console.log(img);
+
     return (
         <div className={s.catalogItem}>
-            <img src={!item.imageUrl ? noImg : item.imageUrl} alt='photo' />
+            <img src={!item.slides?.[0] ? noImg : item.slides?.[0]} alt='photo' />
             <p>{item.article}</p>
             <h3>{item.name}</h3>
-            <button onClick={() => goToCart(item.id)}>Редактировать</button>
-            <button onClick={() => deleteItem(item.id)}>УДАЛИТЬ</button>
+            <div className={s.bthBlock}>
+                <button onClick={() => goToCart(item.id)}>РЕДАКТИРОВАТЬ</button>
+                <button onClick={() => deleteItem(item.id)}>УДАЛИТЬ</button>
+            </div>
         </div>
     );
 }

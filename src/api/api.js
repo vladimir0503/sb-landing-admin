@@ -9,22 +9,42 @@ const authorizeUser = async (email, password) => {
     return data.user;
 };
 
-const getProducts = async name => {
-    const res = await fetch(`${urlDb}/catalog/${name}.json`);
+const getProducts = async catalogName => {
+    const res = await fetch(`${urlDb}/catalog/${catalogName}.json`);
     const data = await res.json();
     return data;
 };
 
-const deleteProduct = async (name, id) => {
-    const res = await fetch(`${urlDb}/catalog/${name}/${id}.json?auth=${secret}`, {
+const addProduct = async catalogName => {
+
+    const product = {
+        name: 'Название товара',
+        price: 'Цена',
+        article: 'Артикул',
+        description: 'Описание товара',
+        engravingIdeas: [''],
+        slides: ['']
+    };
+
+    const res = await fetch(`${urlDb}/catalog/${catalogName}.json?auth=${secret}`, {
+        'method': 'POST',
+        'body': JSON.stringify(product)
+    });
+
+    const id = await res.json();
+    return id;
+}
+
+const deleteProduct = async (catalogName, id) => {
+    const res = await fetch(`${urlDb}/catalog/${catalogName}/${id}.json?auth=${secret}`, {
         'method': 'DELETE'
     });
     const data = await res.json();
     return data;
 };
 
-const getProductInfo = async (name, id) => {
-    const res = await fetch(`${urlDb}/catalog/${name}/${id}.json`);
+const getProductInfo = async (catalogName, id) => {
+    const res = await fetch(`${urlDb}/catalog/${catalogName}/${id}.json`);
     const data = await res.json();
     return data;
 };
@@ -32,6 +52,7 @@ const getProductInfo = async (name, id) => {
 const api = {
     authorizeUser,
     getProducts,
+    addProduct,
     deleteProduct,
     getProductInfo
 };
