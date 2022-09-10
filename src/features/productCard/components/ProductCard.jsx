@@ -1,6 +1,7 @@
 import React from 'react';
 import Menu from '../../Catalog/components/Menu/Menu';
 import ProductInfo from './ProductInfo/ProductInfo';
+import Slider from './Slider/Slider';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchProductCard } from '../productCardSlice';
@@ -28,7 +29,7 @@ const ProductCard = () => {
                     isLoading
                         ? <h2>Загрузка...</h2>
                         : <div className={s.productCardContent}>
-                            {/* <Slider slides={product?.slides} /> */}
+                            <Slider info={product} />
                             <ProductInfo info={product} />
                         </div>
                 }

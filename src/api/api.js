@@ -49,12 +49,21 @@ const getProductInfo = async (catalogName, id) => {
     return data;
 };
 
+const changeProductInfo = async (catalogName, id, data) => {
+    const res = await fetch(`${urlDb}/catalog/${catalogName}/${id}.json?auth=${secret}`, {
+        'method': 'PATCH',
+        'body': JSON.stringify(data)
+    });
+    return await res.json();
+};
+
 const api = {
     authorizeUser,
     getProducts,
     addProduct,
     deleteProduct,
-    getProductInfo
+    getProductInfo,
+    changeProductInfo
 };
 
 export default api;

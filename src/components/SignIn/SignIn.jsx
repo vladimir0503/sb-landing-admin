@@ -45,7 +45,6 @@ const SignIn = () => {
                 <input placeholder='password' type='password' value={password} onChange={e => setPassword(e.target.value)} />
                 <input type='submit' />
             </form>
-            <button onClick={testAddCard}>Добавить карточку</button>
         </div>
     );
 };

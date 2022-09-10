@@ -24,10 +24,6 @@ const CatalogItem = ({ item }) => {
         console.log(res);
     };
 
-    const img = item.slides?.[0];
-
-    console.log(img);
-
     return (
         <div className={s.catalogItem}>
             <img src={!item.slides?.[0] ? noImg : item.slides?.[0]} alt='photo' />
