@@ -1,11 +1,12 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { getProductCard } from '../../productCardSlice'; 
+import { getProductCard, changeProductCard } from '../../productCardSlice';
 import { useParams } from 'react-router-dom';
 import api from '../../../../api/api';
 import Loader from '../../../../components/common/Loader/Loader';
 
 import s from './ProductInfo.module.scss';
+import EngravingIdeas from './EngravingIdeas/EngravingIdeas';
 
 const ProductInfo = ({ info }) => {
     const [name, setName] = React.useState(info?.name);
@@ -13,13 +14,21 @@ const ProductInfo = ({ info }) => {
     const [description, setDescription] = React.useState(info?.description);
     const [price, setPrice] = React.useState(info?.price);
     const [isLoading, setLoading] = React.useState(false);
+    const [changeMode, setChange] = React.useState(false);
 
     const url = useParams();
 
     const dispatch = useDispatch();
 
+    const changeEngravingIdeas = () => {
+        setChange(true);
+    };
+
     const changeInfo = async e => {
         e.preventDefault();
+
+        setLoading(true);
+
         const data = {
             ...info,
             name,
@@ -28,25 +37,15 @@ const ProductInfo = ({ info }) => {
             price
         };
 
-        setLoading(true);
-
-        try {
-            const res = await api.changeProductInfo(url.name, url.id, data);
-            dispatch(getProductCard(data));
-            console.log(res);
-        } catch (error) {
-            alert('Ошибка сервера');
-            console.error(error);
-        } finally {
-            setLoading(false);
-        };
+        await dispatch(changeProductCard(url.name, url.id, data));
+        setLoading(false);
     };
 
     return (
         <div className={s.productInfo}>
-            <form onSubmit={changeInfo}>
+            <form className={s.productForm} onSubmit={changeInfo}>
                 <div className={s.formItem}>
-                    <input onBlur={changeInfo} onChange={e => setName(e.target.value)} value={name}  />
+                    <input onBlur={changeInfo} onChange={e => setName(e.target.value)} value={name} />
                     <button disabled={isLoading}>Изменить</button>
                 </div>
                 <div className={s.formItem}>
@@ -62,6 +61,8 @@ const ProductInfo = ({ info }) => {
                     <button disabled={isLoading}>Изменить</button>
                 </div>
             </form>
+            <button className={s.changeIdeasBtn} onClick={changeEngravingIdeas}>Изменить идеи гравировки</button>
+            {changeMode && <EngravingIdeas toggleMode={setChange} info={info} />}
             {isLoading
                 && <div className={s.loaderWrapper}>
                     <Loader />

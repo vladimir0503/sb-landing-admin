@@ -53,8 +53,20 @@ ul {
   padding: 0;
 }
 
+%autofill {
+  transition: background-color 600000s 0s, color 600000s 0s;
+}
+
 textarea,
 input {
   font-family: "Oswald";
   font-style: normal;
+
+  &:-webkit-autofill {
+    @extend %autofill;
+
+    &:focus {
+      @extend %autofill;
+    }
+  }
 }

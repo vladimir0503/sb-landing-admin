@@ -1,46 +1,48 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { getProductCard } from '../../productCardSlice';
 import { useParams } from 'react-router-dom';
+import { changeProductCard } from '../../productCardSlice';
+import Loader from '../../../../components/common/Loader/Loader';
 import api from '../../../../api/api';
 import noImg from '../../../../images/noImg.jpg';
 
 import s from './Slider.module.scss';
 
-const Slider = ({ info }) => {
+const Slider = ({ info, itemName }) => {
     const [urlImg, setUrlImg] = React.useState('');
+    const [isLoading, setLoading] = React.useState(false);
 
     const route = useParams();
 
     const dispatch = useDispatch();
 
+    const addSlide = async e => {
+        e.preventDefault();
+
+        setLoading(true);
+
+        const currentArr = [...info?.[itemName].filter(item => item !== ''), urlImg];
+        const newInfo = { ...info, [itemName]: currentArr };
+
+        await api.changeProductInfo(route.name, route.id, newInfo);
+        dispatch(changeProductCard(route.name, route.id, newInfo));
+
+        setLoading(false);
+        setUrlImg('');
+    };
+
     const deleteSlide = async id => {
-        try {
-            const currentSlide = info?.slides.filter((_, i) => i !== id);
-            const newInfo = { ...info, slides: currentSlide.length ? currentSlide : [''] };
-            await api.changeProductInfo(route.name, route.id, newInfo);
-            dispatch(getProductCard(newInfo));
-        } catch (error) {
-            alert('Ошибка сервера');
-            console.error(error);
-        };
-    };
 
-    const addSlide = async () => {
-        try {
-            const currentSlide = [...info?.slides.filter(item => item !== ''), urlImg];
-            const newInfo = { ...info, slides: currentSlide };
-            await api.changeProductInfo(route.name, route.id, newInfo);
-            dispatch(getProductCard(newInfo));
-        } catch (error) {
-            alert('Ошибка сервера');
-            console.error(error);
-        } finally {
-            setUrlImg('');
-        };
-    };
+        setLoading(true);
 
-    console.log(info);
+        const currentArr = info?.[itemName].filter((_, i) => i !== id);
+        const newInfo = { ...info, [itemName]: currentArr.length ? currentArr : [''] };
+
+        await api.changeProductInfo(route.name, route.id, newInfo);
+        dispatch(changeProductCard(route.name, route.id, newInfo));
+
+        setLoading(false);
+    };
 
     return (
 
@@ -50,12 +52,12 @@ const Slider = ({ info }) => {
             >
                 <img
                     className={s.slideImg}
-                    src={info?.slides[0] ? info?.slides[0] : noImg}
+                    src={info?.[itemName][0] ? info?.[itemName][0] : noImg}
                     alt='slide'
                 />
             </div>
             <div className={s.sliderItems}>
-                {info?.slides && info?.slides.map((img, i) => (
+                {info?.[itemName] && info?.[itemName].map((img, i) => (
                     <div
                         key={i}
                         className={s.sliderItem}
@@ -65,18 +67,20 @@ const Slider = ({ info }) => {
                             alt='slide'
                         />
                         <button
+                            disabled={isLoading}
                             onClick={() => deleteSlide(i)}
-                            className={!info?.slides[0] ? s.hide : ''}
+                            className={!info?.[itemName][0] ? s.hide : ''}
                         >
                             УДАЛИТЬ
                         </button>
                     </div>
                 ))}
             </div>
-            <div className={s.addingPictureBlock}>
-                <button onClick={addSlide}>ДОБАВИТЬ</button>
+            <form className={s.addingPictureBlock} onSubmit={addSlide}>
+                <button>ДОБАВИТЬ</button>
                 <input onChange={e => setUrlImg(e.target.value)} placeholder='Вставте url картинки' value={urlImg} />
-            </div>
+            </form>
+            {isLoading && <Loader />}
         </div>
     )
 }

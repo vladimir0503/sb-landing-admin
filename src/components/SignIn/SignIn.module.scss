@@ -1,0 +1,61 @@
+.signIn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(180deg, rgba(64, 0, 2, 0.2) 23.55%, rgba(0, 0, 0, 0) 100%), #c39d7f;
+}
+
+.authForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 679px;
+    height: 412px;
+    padding-top: 61px;
+    margin-top: -543px;
+    background: rgba(244, 243, 243, 0.06);
+    border: 5px solid rgba(198, 198, 198, 0.97);
+    backdrop-filter: blur(10px);
+
+    h1 {
+        font-weight: 500;
+        font-size: 50px;
+        line-height: 49px;
+        letter-spacing: 0.01em;
+        margin-bottom: 32px;
+        color: var(--dark-blue);
+    }
+
+    input {
+        width: 479px;
+        height: 50px;
+        background-color: var(--dark-blue);
+        color: #d2d2d2;
+        border: 2px solid #ffffff;
+        padding-left: 20px;
+        margin-bottom: 16px;
+        font-weight: 400;
+        font-size: 25px;
+        line-height: 150%;
+    }
+
+    button {
+        width: 236px;
+        height: 33px;
+        background: #333333;
+        border: 2px solid #ffffff;
+        margin-top: 19px;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 27px;
+        color: #ffffff;
+        transition: 0.3s;
+
+        &:hover {
+            background-color: var(--purple);
+        }
+    }
+}

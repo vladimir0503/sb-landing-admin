@@ -2,14 +2,17 @@
     display: flex;
     width: 100%;
     height: 100%;
-    padding: 99px 0 99px 0;
+    padding: 60px 0 60px 0;
 }
 
 .productCardWrapper {
     display: flex;
-    justify-content: space-between;
     width: 1420px;
     margin: 0 auto;
+}
+
+.loaderWrapper {
+    margin-left: 34px;
 }
 
 .productCardContent {

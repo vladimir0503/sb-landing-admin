@@ -3,12 +3,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getCatalog } from '../catalogSlice';
 import { useNavigate } from 'react-router-dom';
 import api from '../../../api/api';
+import Loader from '../../../components/common/Loader/Loader';
 import Menu from './Menu/Menu';
 import CatalogItem from './CatalogItem/CatalogItem';
 
 import s from './Catalog.module.scss';
-
-const url = 'https://engraving-db-13cea-default-rtdb.firebaseio.com/catalog';
 
 const Catalog = () => {
 
@@ -39,7 +38,7 @@ const Catalog = () => {
                     <Menu />
                 </div>
                 {isLoading
-                    ? <h1>Загрузка</h1>
+                    ? <Loader />
                     : <div className={s.contentWrapper}>
                         <div className={s.catalogItems}>
                             {catalog.map((item, i) => (

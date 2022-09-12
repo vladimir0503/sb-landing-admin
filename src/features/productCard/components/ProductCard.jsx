@@ -1,10 +1,11 @@
 import React from 'react';
 import Menu from '../../Catalog/components/Menu/Menu';
 import ProductInfo from './ProductInfo/ProductInfo';
+import Loader from '../../../components/common/Loader/Loader';
 import Slider from './Slider/Slider';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchProductCard } from '../productCardSlice';
+import { fetchProductCard, getProductCard } from '../productCardSlice';
 
 import s from './ProductCard.module.scss';
 
@@ -16,10 +17,9 @@ const ProductCard = () => {
     const dispatch = useDispatch();
 
     React.useEffect(() => {
-        dispatch(fetchProductCard(name, id))
+        dispatch(fetchProductCard(name, id));
+        return () => dispatch(getProductCard(null));
     }, []);
-
-    console.log(product);
 
     return (
         <div className={s.productCard}>
@@ -27,9 +27,9 @@ const ProductCard = () => {
                 <Menu />
                 {
                     isLoading
-                        ? <h2>Загрузка...</h2>
+                        ? <div className={s.loaderWrapper}><Loader /></div>
                         : <div className={s.productCardContent}>
-                            <Slider info={product} />
+                            <Slider info={product} itemName='slides' />
                             <ProductInfo info={product} />
                         </div>
                 }

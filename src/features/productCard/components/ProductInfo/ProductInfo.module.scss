@@ -1,40 +1,3 @@
-@keyframes opacity-anim1 {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes opacity-anim2 {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes opacity-anim3 {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
-
-%title {
-    font-weight: 400;
-    font-size: 25px;
-    line-height: 37px;
-    margin-bottom: 50px;
-}
-
 %field {
     width: 300px;
     margin-right: 10px;
@@ -43,205 +6,97 @@
     border: 1px solid #0000001f;
 }
 
+%btn-style {
+    width: 110px;
+    height: 23px;
+    background: #7c5253;
+    border-radius: 15px;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 130%;
+    letter-spacing: -0.01em;
+    color: #ffffff;
+
+    &:hover {
+        transform: translateY(2px);
+    }
+
+    &:active {
+        transform: translateY(5px);
+    }
+}
+
 .productInfo {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     width: 444px;
     height: 484px;
     border: 2px solid #333333;
     padding: 46px 71px 10px 40px;
     transition: 0.2s;
     color: var(--dark-blue);
-
-    form {
-        display: flex;
-        flex-direction: column;
-
-        div {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-
-            &:nth-child(1) {
-                input {
-                    font-weight: 400;
-                    font-size: 25px;
-                    line-height: 37px;
-                    letter-spacing: 0.1em;
-                }
-            }
-            
-            &:nth-child(2) {
-                input {
-                    font-weight: 400;
-                    font-size: 15px;
-                    line-height: 150%;
-                }
-            }
-            
-            &:nth-child(4) {
-                input {
-                    font-weight: 400;
-                    font-size: 25px;
-                    line-height: 120%;
-                }
-            }
-        }
-
-        input {
-            @extend %field;
-        }
-
-        textarea {
-            @extend %field;
-            height: 142px;
-            font-weight: 400;
-            font-size: 25px;
-            line-height: 37px;
-        }
-
-        button {
-            width: 110px;
-            height: 23px;
-            background: #7c5253;
-            border-radius: 15px;
-            font-style: italic;
-            font-weight: 400;
-            font-size: 15px;
-            line-height: 130%;
-            letter-spacing: -0.01em;
-            color: #ffffff;
-
-            &:hover {
-                transform: translateY(2px);
-            }
-
-            &:active {
-                transform: translateY(5px);
-            }
-        }
-    }
 }
 
-.infoBlock {
-    animation: opacity-anim1 0.3s;
+.productForm {
+    display: flex;
+    flex-direction: column;
 
-    h2 {
-        @extend %title;
-    }
+    div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
 
-    p {
-        margin-bottom: 16px;
+        &:nth-child(1) {
+            input {
+                font-weight: 400;
+                font-size: 25px;
+                line-height: 37px;
+                letter-spacing: 0.1em;
+            }
+        }
 
-        &:nth-child(3) {
-            font-weight: 500;
+        &:nth-child(2) {
+            input {
+                font-weight: 400;
+                font-size: 15px;
+                line-height: 150%;
+            }
         }
 
         &:nth-child(4) {
-            font-weight: 400;
-            font-size: 25px;
-            line-height: 120%;
-        }
-    }
-}
-
-.price {
-    @extend %title;
-}
-
-.buttonsWrapper {
-    display: flex;
-    justify-content: space-between;
-}
-
-.buttonsBlock {
-    display: flex;
-    flex-wrap: wrap;
-    align-content: space-between;
-    justify-content: flex-end;
-    width: 310px;
-
-    button {
-        padding: 10px 20px;
-        background: #333333;
-        border: 1px solid #ffffff;
-        margin-right: 8px;
-        margin-bottom: 8px;
-        font-weight: 400;
-        font-size: 18px;
-        line-height: 27px;
-        color: #ffffff;
-        cursor: pointer;
-        transition: 0.2s;
-
-        &:hover {
-            background-color: var(--purple);
-        }
-
-        img {
-            margin-left: 8px;
-            transition: 0.3s;
-        }
-
-        &.active {
-            background-color: var(--purple);
-
-            img {
-                transform: rotate(180deg);
+            input {
+                font-weight: 400;
+                font-size: 25px;
+                line-height: 120%;
             }
         }
     }
-}
 
-.btnActive {
-    background-color: var(--purple);
-}
-
-%text-style {
-    font-weight: 500;
-    font-size: 30px;
-    line-height: 44px;
-}
-
-.delivery {
-    animation: opacity-anim2 0.3s;
-
-    p {
-        @extend %text-style;
+    input {
+        @extend %field;
     }
 
-    li {
-        @extend %text-style;
+    textarea {
+        @extend %field;
+        height: 142px;
+        font-weight: 400;
+        font-size: 25px;
+        line-height: 37px;
     }
 
-    ul {
-        padding-left: 31px;
+    button {
+        @extend %btn-style;
     }
-}
-
-.payment {
-    animation: opacity-anim3 0.3s;
-
-    p {
-        @extend %text-style;
-        font-weight: 300;
-    }
-
-    li {
-        @extend %text-style;
-    }
-
-    ul {
-        padding-left: 31px;
-    }
-}
-
-.hide {
-    opacity: 0;
 }
 
 .loaderWrapper {
     position: relative;
-    bottom: 59px;
+    bottom: 34px;
+}
+
+.changeIdeasBtn {
+    @extend %btn-style;
+    width: 181px;
 }
