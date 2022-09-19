@@ -44,3 +44,45 @@
     flex-wrap: wrap;
     margin: 0 0 32px 10px;
 }
+
+@media screen and (max-width: 1184px) {
+    .catalog {
+        padding-top: 70px;
+    }
+
+    .catalogContent {
+        width: 730px;
+    }
+
+    .products {
+        width: 100%;
+        margin: 0;
+        justify-content: center;
+    }
+
+    .empty {
+        margin: 0;
+    }
+}
+
+@media screen and (max-width: 730px) {
+    .catalogContent {
+        width: 350px;
+        margin-top: 0px;
+    }
+
+    .catalogItems {
+        justify-content: center;
+     }
+
+    .empty {
+        font-size: 33px;
+        line-height: 49px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .catalogContent {
+        width: 245px;
+    }
+}

@@ -4,7 +4,7 @@
     align-items: center;
     height: 100px;
     padding: 0 25px 0 25px;
-    background-color: #C8A183;
+    background-color: #c8a183;
 
     h1 {
         transition: 0.3s;
@@ -14,4 +14,28 @@
             color: var(--purple);
         }
     }
+}
+
+@media screen and (max-width: 1184px) {
+    .header {
+        height: 93px;
+    }
+
+    
+}
+
+@media screen and (max-width: 730px) {
+    header {
+        height: 59px;
+    }
+
+   
+}
+
+@media screen and (max-width: 320px) {
+    header {
+        height: 50px;
+    }
+
+
 }

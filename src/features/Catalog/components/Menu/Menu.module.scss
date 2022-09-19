@@ -1,4 +1,4 @@
-.catalogNawbar {
+.catalogNavbar {
     position: sticky;
     top: 0px;
     display: flex;
@@ -6,6 +6,17 @@
     width: 272px;
     height: 372px;
     border: 1px solid #000000;
+}
+
+.burgerBtn {
+    position: relative;
+    top: 3px;
+    left: 276px;
+    width: 57px;
+    height: 57px;
+    margin-bottom: -57px;
+    display: none;
+    background-color: #ffffff00;
 }
 
 %active-name {
@@ -25,7 +36,7 @@
     font-weight: 400;
     font-size: 25px;
     transition: 0.2s;
-    border: 2px solid #EBEBEB;
+    border: 2px solid #ebebeb;
     cursor: pointer;
 
     &:hover {
@@ -37,4 +48,57 @@
     background-color: var(--purple);
     color: #d5d5d5;
     border: 2px solid #ffffff;
+}
+
+@media screen and (max-width: 1184px) {
+    .catalogNavbar {
+        position: fixed;
+        z-index: 100000;
+        top: 94px;
+        left: -274px;
+        transition: 0.3s;
+
+        &.activeNavbar {
+            left: 0;
+        }
+    }
+
+    .burgerBtn {
+        display: block;
+    }
+
+    .catalogName {
+        background-color: #ebebeb;
+    }
+
+    .activeName {
+        background-color: var(--purple);
+        color: #d5d5d5;
+        border: 2px solid #ffffff;
+    }
+}
+
+@media screen and (max-width: 730px) {
+    .catalogNavbar {
+        top: 100px;
+    }
+
+    .burgerBtn {
+        left: 273px;
+
+        img {
+            width: 47px;
+        }
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .catalogNavbar {
+        width: 245px;
+        left: -247px;
+    }
+
+    .burgerBtn {
+        left: 249px;
+    }
 }

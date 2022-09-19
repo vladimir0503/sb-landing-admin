@@ -21,7 +21,7 @@ const SignIn = () => {
 
     return (
         <div className={s.signIn}>
-            <img src={logo} alt='logo' />
+            <img className={s.logo} src={logo} alt='logo' />
             <form className={s.authForm} onSubmit={handleSubmit}>
                 <h1>МАСТЕРСКАЯ<br></br> ГРАВИРОВКИ</h1>
                 <input placeholder='mail' type='text' value={mail} onChange={e => setMail(e.target.value)} />

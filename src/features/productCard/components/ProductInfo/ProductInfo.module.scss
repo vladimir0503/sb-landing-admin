@@ -100,3 +100,67 @@
     @extend %btn-style;
     width: 181px;
 }
+
+@media screen and (max-width: 730px) {
+    .productInfo {
+        width: 325px;
+        padding: 10px;
+    }
+
+    %mob-text {
+        font-size: 22px;
+        line-height: 37px;
+    }
+
+    .delivery {
+        p,
+        li {
+            @extend %mob-text;
+        }
+    }
+
+    .payment {
+        p,
+        li {
+            @extend %mob-text;
+        }
+    }
+
+    .infoBlock {
+        p {
+            &:nth-child(4) {
+                font-size: 20px;
+            }
+        }
+    }
+
+    .buttonsWrapper {
+        flex-direction: column;
+    }
+
+    .buttonsBlock {
+        justify-content: flex-start;
+    }
+
+    .formItem {
+        input {
+            width: 100%;
+        }
+
+        textarea {
+            width: 100%;
+            font-size: 20px;
+            line-height: 26px;
+        }
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .productInfo {
+        width: 245px;
+    }
+
+    .buttonsBlock {
+        width: auto;
+    }
+}

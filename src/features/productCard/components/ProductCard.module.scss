@@ -21,3 +21,37 @@
     width: 1127px;
     margin-left: 34px;
 }
+
+@media screen and (max-width: 1184px) {
+
+    .productCardWrapper {
+        width: 730px;
+        justify-content: center;
+        margin-top: 69px;
+        margin-bottom: 52px;
+    }
+
+    .productCardContent {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin: 0;
+    }
+}
+
+@media screen and (max-width: 730px) {
+    .productCardWrapper {
+        width: 350px;
+        margin-top: 21px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .productCardWrapper {
+        width: 245px;
+    }
+
+    // .productCardContent {
+    //     align-items: center;
+    // }
+}

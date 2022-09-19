@@ -18,9 +18,9 @@ const Header = () => {
     };
 
     return (
-        <div className={s.header}>
+        <header className={s.header}>
             <h1 onClick={handleLogout}>Выход</h1>
-        </div>
+        </header>
     );
 };
 

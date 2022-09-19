@@ -59,3 +59,37 @@
         }
     }
 }
+
+@media screen and (max-width: 1184px) {
+    .authForm {
+        width: 730px;
+    }
+}
+
+@media screen and (max-width: 730px) {
+    .signIn {
+        img {
+            width: 348px;
+        }
+    }
+
+    .authForm {
+        width: 350px;
+        height: 337px;
+        margin-top: -353px;
+        padding-top: 13px;
+        border: 3px solid rgba(198, 198, 198, 0.97);
+
+        h1 {
+            font-size: 34px;
+            line-height: 42px;
+        }
+
+        input {
+            width: 87%;
+        }
+    }
+}
+
+@media screen and (max-width: 320px) {
+}

@@ -77,3 +77,35 @@
         }
     }
 }
+
+@media screen and (max-width: 730px) {
+    .catalogItem {
+        padding: 10px;
+        height: auto;
+    }
+
+    .bthBlock {
+        flex-direction: column;
+        button {
+            &:nth-child(1) {
+                left: 0;
+                margin-bottom: 10px;
+            }
+            &:nth-child(2) {
+                left: 0;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .catalogItem {
+        width: 235px;
+        height: auto;
+        padding: 10px;
+
+        img {
+            width: 100%;
+        }
+    }
+}
