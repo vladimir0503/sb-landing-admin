@@ -24,9 +24,7 @@ const Slider = ({ info, itemName }) => {
         const currentArr = [...info?.[itemName].filter(item => item !== ''), urlImg];
         const newInfo = { ...info, [itemName]: currentArr };
 
-        await api.changeProductInfo(route.name, route.id, newInfo);
-        dispatch(changeProductCard(route.name, route.id, newInfo));
-
+        await dispatch(changeProductCard(route.name, route.id, newInfo));
         setLoading(false);
         setUrlImg('');
     };
@@ -38,9 +36,7 @@ const Slider = ({ info, itemName }) => {
         const currentArr = info?.[itemName].filter((_, i) => i !== id);
         const newInfo = { ...info, [itemName]: currentArr.length ? currentArr : [''] };
 
-        await api.changeProductInfo(route.name, route.id, newInfo);
-        dispatch(changeProductCard(route.name, route.id, newInfo));
-
+        await dispatch(changeProductCard(route.name, route.id, newInfo));
         setLoading(false);
     };
 
